@@ -4,7 +4,7 @@ var client = new Discord.Client();
 var prefix = "##"
 var bitrate = "96"
 
-client.loginWithToken('MjEyNTYzMDk3NTY1NjU5MTM2.CotsWw.N9XJvayHDdvqPQimdywKZ-X-EqU', output);
+client.loginWithToken('', output);
 
 function output(error, token) {
         if (error) {
