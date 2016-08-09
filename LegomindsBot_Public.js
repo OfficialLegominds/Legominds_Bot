@@ -3,8 +3,11 @@ const Discord = require('discord.js');
 var client = new Discord.Client();
 var prefix = "##"
 var bitrate = "96"
+var currentgame = "Use ##Help"
+var song = "Nothing"
+var streaming = "Discord.js"
 
-client.loginWithToken('<Token>', output);
+client.loginWithToken('', output);
 
 function output(error, token) {
         if (error) {
@@ -17,6 +20,10 @@ function output(error, token) {
 client.on("ready", function() {
 	console.log("Servers: " + client.servers.length);
 });
+
+
+//client.setPlayingGame("test", callback);
+
 
 ///Non-Voice Commands///
 
@@ -72,12 +79,25 @@ client.on("message", function(message){
 	}
 });
 
+
+///Game and streaming///
+
 client.on("message", function(message){
-	if (message.content === ("test")){
-		client.reply(message, "'''this is a test'''");
+	if (message.content.startsWith(prefix + "Game")){
+		client.setPlayingGame(currentgame);
+		client.reply(message, "Set current Game to: " + currentgame);
 		client.deleteMessage(message);
 	}
 });
+
+client.on("message", function(message){
+	if (message.content.startsWith(prefix + "Stream")){
+		setStreaming(streaming, "https://www.twitch.tv/legominds", 1)
+		client.reply(message, "Set streaming to: " + streaming);
+		client.deleteMessage(message);
+	}
+});
+
 
 ///Voice Stuff///
 
@@ -89,4 +109,11 @@ client.on("message", function(message){
 	//else{
 	//	client.reply(message, "Set the Bitrate to: " + bitrate);
 	//}
+});
+
+client.on("message", function(message){
+	if (message.content.startsWith(prefix + "Now")){
+		client.reply(message, "Currently playing: " + song);
+		client.deleteMessage(message);
+	}
 });
