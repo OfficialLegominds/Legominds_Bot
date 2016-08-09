@@ -9,7 +9,7 @@ bot.on('ready', function() {
 });
 
 bot.on('message', function(user, userID, channelID, message, event) {
-    if (message === "ping") {
+    if (message === "##ping") {
         bot.sendMessage({
             to: channelID,
             message: "pong"
@@ -18,10 +18,10 @@ bot.on('message', function(user, userID, channelID, message, event) {
 });
 
 bot.on('message', function(user, userID, channelID, message, event) {
-    if (message === "Hello") {
+    if (message === "##Hello") {
         bot.sendMessage({
             to: channelID,
-            message: "Hello fag kys"
+            message: "Hello!"
         });
     }
 });
