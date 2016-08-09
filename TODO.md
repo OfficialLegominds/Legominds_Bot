@@ -1,5 +1,6 @@
 List of features to implement:
 
-- [ ] Voice Commands
+- [x] Voice Commands
 - [ ] Discord Quoting
 - [ ] Mass deleting
+- [ ] Get users chan ID
