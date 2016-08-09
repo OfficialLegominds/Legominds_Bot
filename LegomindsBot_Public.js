@@ -6,6 +6,7 @@ var bitrate = "96"
 var currentgame = "Use ##Help"
 var song = "Nothing"
 var streaming = "Discord.js"
+var volume = "100"
 
 client.loginWithToken('', output);
 
@@ -47,15 +48,16 @@ client.on("message", function(message){
 client.on("message", function(message){
 	if (message.content.startsWith(prefix + "Join")){
 		client.reply(message, "Joining Voice.");
-		//joinVoiceChannel(channel, callback);
+		client.joinVoiceChannel("");
+		//client.playFile("C:\Users\ryank\Desktop\song.mp3", volume);
 		client.deleteMessage(message);
 	}
 });
 
 client.on("message", function(message){
 	if (message.content.startsWith(prefix + "Leave")){
-		client.reply(message, "I have left the Voice.");
-		//client.destroy();
+		client.reply(message, "I have left Voice.");
+		client.leaveVoiceChannel("");
 	}
 });
 
@@ -92,7 +94,7 @@ client.on("message", function(message){
 
 client.on("message", function(message){
 	if (message.content.startsWith(prefix + "Stream")){
-		setStreaming(streaming, "https://www.twitch.tv/legominds", 1)
+		client.setStreaming(streaming, "https://www.twitch.tv/legominds", 1)
 		client.reply(message, "Set streaming to: " + streaming);
 		client.deleteMessage(message);
 	}
@@ -104,6 +106,7 @@ client.on("message", function(message){
 client.on("message", function(message){
 	if (message.content.startsWith(prefix + "Bitrate")){
 		client.reply(message, "Current Bitrate: "+ bitrate);
+		client.setChannelBitrate("", bitrate);
 		client.deleteMessage(message);		
 	}
 	//else{
