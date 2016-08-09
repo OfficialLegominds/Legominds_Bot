@@ -1,8 +1,10 @@
+///Variables and background things///
 const Discord = require('discord.js');
 var client = new Discord.Client();
 var prefix = "##"
+var bitrate = "96"
 
-client.loginWithToken('', output);
+client.loginWithToken('MjEyNTYzMDk3NTY1NjU5MTM2.CotsWw.N9XJvayHDdvqPQimdywKZ-X-EqU', output);
 
 function output(error, token) {
         if (error) {
@@ -15,6 +17,8 @@ function output(error, token) {
 client.on("ready", function() {
 	console.log("Servers: " + client.servers.length);
 });
+
+///Non-Voice Commands///
 
 client.on("message", function(message){
 	if (message.content.startsWith(prefix + "Ping")){
@@ -57,11 +61,32 @@ client.on("message", function(message){
 client.on("message", function(message){
 	if (message.content.startsWith(prefix + "Servers")){
 		client.reply(message, "Servers: " + client.servers.length);
+		client.deleteMessage(message);
 	}
 });
 
 client.on("message", function(message){
 	if (message.content === ("Prefix" + "")){
 		client.reply(message, "Set the prefix to " + prefix);
+		client.deleteMessage(message);
 	}
+});
+
+client.on("message", function(message){
+	if (message.content === ("test")){
+		client.reply(message, "'''this is a test'''");
+		client.deleteMessage(message);
+	}
+});
+
+///Voice Stuff///
+
+client.on("message", function(message){
+	if (message.content.startsWith(prefix + "Bitrate")){
+		client.reply(message, "Current Bitrate: "+ bitrate);
+		client.deleteMessage(message);		
+	}
+	//else{
+	//	client.reply(message, "Set the Bitrate to: " + bitrate);
+	//}
 });
