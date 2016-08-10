@@ -1,14 +1,19 @@
-///Variables and background things///
+//Variables and background things//
 const Discord = require('discord.js');
 var client = new Discord.Client();
 var prefix = "##"
 var bitrate = "96"
-var currentgame = "Use ##Help"
+var currentgame = "Not playing anything"
 var song = "Nothing"
 var streaming = "Discord.js"
 var volume = "100"
+var Auth = require("./auth.json");
+//var clientid = user.id()
 
-client.loginWithToken('', output);
+//Startup Things//
+
+//Uses Discord Auth to connect to the bot//
+client.loginWithToken(Auth, output);
 
 function output(error, token) {
         if (error) {
@@ -18,15 +23,19 @@ function output(error, token) {
                 console.log('Logged in. Token: ' + token);
 }
 
+//Displays how many servers the bot is on//
 client.on("ready", function() {
 	console.log("Servers: " + client.servers.length);
 });
 
+//Makes the bot set game to help//
+client.on("ready", function() {
+	client.setPlayingGame(prefix + "Help | " +client.servers.length + " Servers");
+});
 
-//client.setPlayingGame("test", callback);
 
 
-///Non-Voice Commands///
+//Non-Voice Commands//
 
 client.on("message", function(message){
 	if (message.content.startsWith(prefix + "Ping")){
@@ -45,21 +54,6 @@ client.on("message", function(message){
 	}
 });
 
-client.on("message", function(message){
-	if (message.content.startsWith(prefix + "Join")){
-		client.reply(message, "Joining Voice.");
-		client.joinVoiceChannel("");
-		//client.playFile("C:\Users\ryank\Desktop\song.mp3", volume);
-		client.deleteMessage(message);
-	}
-});
-
-client.on("message", function(message){
-	if (message.content.startsWith(prefix + "Leave")){
-		client.reply(message, "I have left Voice.");
-		client.leaveVoiceChannel("");
-	}
-});
 
 client.on("message", function(message){
 	if (message.content.startsWith(prefix + "Delete")){
@@ -75,6 +69,12 @@ client.on("message", function(message){
 });
 
 client.on("message", function(message){
+	if (message.content === ("zzz")){
+		client.setStatusIdle();
+	}
+});
+
+client.on("message", function(message){
 	if (message.content === ("Prefix" + "")){
 		client.reply(message, "Set the prefix to " + prefix);
 		client.deleteMessage(message);
@@ -82,7 +82,7 @@ client.on("message", function(message){
 });
 
 
-///Game and streaming///
+//Game and streaming//
 
 client.on("message", function(message){
 	if (message.content.startsWith(prefix + "Game")){
@@ -101,12 +101,12 @@ client.on("message", function(message){
 });
 
 
-///Voice Stuff///
+//Voice Stuff//
 
 client.on("message", function(message){
 	if (message.content.startsWith(prefix + "Bitrate")){
 		client.reply(message, "Current Bitrate: "+ bitrate);
-		client.setChannelBitrate("", bitrate);
+		client.setChannelBitrate(<id here>, bitrate);
 		client.deleteMessage(message);		
 	}
 	//else{
@@ -117,6 +117,49 @@ client.on("message", function(message){
 client.on("message", function(message){
 	if (message.content.startsWith(prefix + "Now")){
 		client.reply(message, "Currently playing: " + song);
+		client.deleteMessage(message);
+	}
+});
+
+client.on("message", function(message){
+	if (message.content.startsWith(prefix + "Leave")){
+		client.reply(message, "I have left Voice.");
+		client.leaveVoiceChannel();
+		client.deleteMessage(message);
+	}
+});
+
+client.on("message", function(message){
+	if (message.content.startsWith(prefix + "Join")){
+		client.reply(message, "Joining Voice.");
+		client.joinVoiceChannel(<id here>);
+		client.deleteMessage(message);
+	}
+});
+
+client.on("message", function(message){
+	if (message.content.startsWith(prefix + "Play")){
+		playFile("C:\Users\ryank\Desktop\song.mp3", volume);
+		client.joinVoiceChannel(user);
+		client.deleteMessage(message);
+	}
+});
+
+client.on("message", function(message){
+	if (message.content.startsWith(prefix + "Pause")){
+		client.reply(message, "Music Paused.");
+		pause()
+		client.deleteMessage(message);
+	}
+});
+
+
+
+client.on("message", function(message){
+	if (message.content.startsWith(prefix + "EnableNSFW")){
+		client.reply(message, "You now have access to NSFW areas.");
+		client.roles.get("name", "NSFW");
+		client.addMemberToRole(message.author, NSFW);
 		client.deleteMessage(message);
 	}
 });
