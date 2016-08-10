@@ -27,7 +27,7 @@ client.on("ready", function() {
 
 //Makes the bot set game to help//
 client.on("ready", function() {
-	client.setPlayingGame(prefix + "Help | " + client.servers.length + " Servers");
+	client.setPlayingGame(prefix + "Help | " +client.servers.length + " Servers");
 });
 
 
@@ -66,7 +66,7 @@ client.on("message", function(message){
 
 client.on("message", function(message){
 	if (message.content.startsWith(prefix + "GameOff")){
-		client.setPlayingGame("Use @@Help");
+		client.setPlayingGame(prefix + "Help | " + client.servers.length + " Servers");
 		client.reply(message, "The game has ended.");
 		client.deleteMessage(message);
 	}
@@ -83,6 +83,17 @@ client.on("message", function(message){
 client.on("message", function(message){
 	if (message.content.startsWith(prefix + "Servers")){
 		client.reply(message, "Servers: " + client.servers.length);
+		client.deleteMessage(message);
+	}
+});
+
+client.on("message", function(message){
+	if (message.content === (prefix + "Prefix")){
+		client.reply(message, "Please provide a prefix. Current Prefix: " + prefix);
+		client.deleteMessage(message);
+	}
+	if (message.content === (prefix + "Prefix " + "s")){
+		client.reply(message, "Set the prefix to " + prefix);
 		client.deleteMessage(message);
 	}
 });
