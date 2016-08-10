@@ -8,7 +8,8 @@ var song = "Nothing"
 var streaming = "Discord.js"
 var volume = "100"
 var Auth = require("./auth.json");
-//var clientid = user.id()
+var getid = require("./id.js");
+var tempid = ""
 
 //Startup Things//
 
@@ -39,7 +40,7 @@ client.on("ready", function() {
 
 client.on("message", function(message){
 	if (message.content.startsWith(prefix + "Ping")){
-		client.reply(message, "Pong!");
+		client.reply(message, "Pong!" + message.timestamp);
 	}
 });
 
@@ -69,13 +70,11 @@ client.on("message", function(message){
 });
 
 client.on("message", function(message){
-	if (message.content === ("zzz")){
-		client.setStatusIdle();
+	if (message.content === (prefix + "Prefix")){
+		client.reply(message, "Please provide a prefix. Current Prefix: " + prefix);
+		client.deleteMessage(message);
 	}
-});
-
-client.on("message", function(message){
-	if (message.content === ("Prefix" + "")){
+	if (message.content === (prefix + "Prefix " + "s")){
 		client.reply(message, "Set the prefix to " + prefix);
 		client.deleteMessage(message);
 	}
@@ -94,7 +93,7 @@ client.on("message", function(message){
 
 client.on("message", function(message){
 	if (message.content.startsWith(prefix + "Stream")){
-		client.setStreaming(streaming, "https://www.twitch.tv/legominds", 1)
+		client.setStreaming(streaming, "<Stream Link>", 1)
 		client.reply(message, "Set streaming to: " + streaming);
 		client.deleteMessage(message);
 	}
@@ -106,7 +105,7 @@ client.on("message", function(message){
 client.on("message", function(message){
 	if (message.content.startsWith(prefix + "Bitrate")){
 		client.reply(message, "Current Bitrate: "+ bitrate);
-		client.setChannelBitrate(<id here>, bitrate);
+		client.setChannelBitrate("<id here>", bitrate);
 		client.deleteMessage(message);		
 	}
 	//else{
@@ -131,9 +130,11 @@ client.on("message", function(message){
 
 client.on("message", function(message){
 	if (message.content.startsWith(prefix + "Join")){
-		client.reply(message, "Joining Voice.");
-		client.joinVoiceChannel(<id here>);
-		client.deleteMessage(message);
+		tempid = message.author
+		//client.reply(message, "Joining Voice.");
+		//client.joinVoiceChannel(message.channel);
+		console.log(tempid);
+		//client.deleteMessage(message);
 	}
 });
 
@@ -154,6 +155,7 @@ client.on("message", function(message){
 });
 
 
+//Misc//
 
 client.on("message", function(message){
 	if (message.content.startsWith(prefix + "EnableNSFW")){
@@ -163,3 +165,4 @@ client.on("message", function(message){
 		client.deleteMessage(message);
 	}
 });
+
