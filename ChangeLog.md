@@ -18,3 +18,7 @@
 - Disabled "EnableNSFW" until I get around to it.
 - Started making the "Prefix" command useable, with error messages.
 - Help command tidy up.
+
+#9/8/16 19:24 -- Legominds
+- Added a Sleep mode that when active does not allow commands to be sent.
+- Fixed up Game and Prefix commands.
