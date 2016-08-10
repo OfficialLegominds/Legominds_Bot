@@ -1,0 +1,15 @@
+"Commands for this bot:"
+
+"Any user commands:"
+
+"- Ping -- Will reply with Pong!"
+"- Next -- Replys with the date of next game."
+"- Help -- DM's user with help dialog."
+"- Link -- DM's user with Roll20 link."
+"- Servers -- Tells user how many server the bot is on."
+
+"Superuser commands:"
+
+"- GameOn -- Will message @everyone and will make the bot say 'Streaming' + 'DnD on Roll20' (The bot is not streaming)."
+"- GameOff -- Changes the game to 'Use @@Help'."
+
