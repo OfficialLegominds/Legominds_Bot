@@ -11,7 +11,7 @@
 - Separated code.
 - Added more Documentation to GitHub.
 
-#9/8/16 12:10 -- Legominds
+#10/8/16 12:10 -- Legominds
 - Made the auth ticket more secure (No longer on the main .js file).
 - Started making id.js for getting client's voice ID.
 - Made it change game to Help command plus how many servers it's on, on startup.
@@ -19,6 +19,11 @@
 - Started making the "Prefix" command useable, with error messages.
 - Help command tidy up.
 
-#9/8/16 19:24 -- Legominds
+#10/8/16 19:24 -- Legominds
 - Added a Sleep mode that when active does not allow commands to be sent.
 - Fixed up Game and Prefix commands.
+ 
+#11/8/16 21:25 -- Legominds
+- Fixed Sleep mode and it is now fully implemented with Prefix + Sleep and Prefix + Awake.
+- Added some misc commands, not in Help.
+- Starting getting channel id.
