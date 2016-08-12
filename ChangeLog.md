@@ -27,3 +27,6 @@
 - Fixed Sleep mode and it is now fully implemented with Prefix + Sleep and Prefix + Awake.
 - Added some misc commands, not in Help.
 - Starting getting channel id.
+
+#11/8/16 23:25 -- Legominds
+- Bot now joins author's voice. Works on multiple guilds.
