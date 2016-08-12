@@ -30,3 +30,6 @@
 
 #11/8/16 23:25 -- Legominds
 - Bot now joins author's voice. Works on multiple guilds.
+- Starting on fixing Leave command.
+- Added console logging of what voice it's joined + what author initiated the command.
+- Started on Help quotes.
