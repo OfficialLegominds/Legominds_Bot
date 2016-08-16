@@ -33,3 +33,7 @@
 - Starting on fixing Leave command.
 - Added console logging of what voice it's joined + what author initiated the command.
 - Started on Help quotes.
+
+#16/8/16 01:58 -- Legominds
+- Added more misc/satire commands. ##PogChamp , ##Fgt , ##Feels
+- 
