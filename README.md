@@ -1,3 +1,4 @@
+#PLEASE USE: https://github.com/OfficialLegominds/LegomindsBot
 # Legominds_Bot
 My bot for discord using Discord.js
 
